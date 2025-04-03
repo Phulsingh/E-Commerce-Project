@@ -120,9 +120,13 @@ const Login = () => {
           </button>
         </form>
 
-        <p className="mt-4 text-gray-500">
+        <p onClick={()=>{
+          navigate("/register")
+        }} className="mt-4 text-gray-500">
           Don't have an account?{" "}
-          <a
+          <a onClick={()=>{
+          navigate("/register")
+        }}
             href="/register"
             className="text-orange-500 font-semibold hover:underline"
           >
