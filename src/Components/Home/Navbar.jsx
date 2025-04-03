@@ -42,7 +42,9 @@ const Navbar = () => {
         </div>
       </div>
       <div className="md:hidden  flex w-full justify-around  items-center">
-           <div className="bg-[#FC8A06] cursor-pointer h-16 space-x-2 flex items-center justify-center w-[50%]">
+           <div  onClick={()=>{
+            navigate("/login")
+           }} className="bg-[#FC8A06] cursor-pointer h-16 space-x-2 flex items-center justify-center w-[50%]">
            <IoPersonCircleSharp size={34} />
                 <p className="text-1xl  font-semibold">{currentUser?.name ? currentUser.name.slice(0,10) : "Login /Signup"}</p>
            </div>
