@@ -46,7 +46,7 @@ const Login = () => {
     
     if (user.password === formData.password) {
       localStorage.setItem("currentUser", JSON.stringify(user));
-      toast.success('Successfully toasted!') // ✅ Show toast first
+      toast.success('Login Successfully !') // ✅ Show toast first
 
       setTimeout(() => {
         navigate("/"); // ✅ Delay navigation for toast to appear
@@ -114,7 +114,7 @@ const Login = () => {
 
           <button
             onClick={handleShowPassword}
-            className="w-full bg-orange-500 text-white py-2 rounded-lg hover:bg-orange-600 transition-all"
+            className="w-full bg-orange-500 cursor-pointer text-white py-2 rounded-lg hover:bg-orange-600 transition-all"
           >
             Sign in
           </button>
@@ -127,8 +127,7 @@ const Login = () => {
           <a onClick={()=>{
           navigate("/register")
         }}
-            href="/register"
-            className="text-orange-500 font-semibold hover:underline"
+            className="text-orange-500 cursor-pointer font-semibold hover:underline"
           >
             Sign up
           </a>

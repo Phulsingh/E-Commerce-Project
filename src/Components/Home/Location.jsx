@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { FaLocationDot } from "react-icons/fa6";
 import { FaShoppingCart } from "react-icons/fa";
 import { MdDownloadForOffline } from "react-icons/md";
@@ -6,11 +6,16 @@ import Logo from "../../../src/assets/LOGO 1.png";
 import { IoReorderThreeOutline } from "react-icons/io5";
 import { useContext } from "react";
 import MyContaxt from "../Contaxt/MyContaxt";
-
+import Sidebar from "./Sidebar";
 
 const Location = () => {
+  const { ToggleCartDetails } = useContext(MyContaxt);
 
-  const {ToggleCartDetails} = useContext(MyContaxt)
+  const [isOpen, setIsOpen]  = useState(false);
+
+  const handleIsOpen = ()=>{
+    setIsOpen((prev)=> !prev)
+  }
 
 
   return (
@@ -33,25 +38,29 @@ const Location = () => {
             </span>
           </p>
         </div>
-        <div onClick={ToggleCartDetails} className="w-50  cursor-pointer h-full bg-[#028643] flex flex-row space-x-8 text-white justify-center items-center">
+        <div
+          onClick={ToggleCartDetails}
+          className="w-50  cursor-pointer h-full bg-[#028643] flex flex-row space-x-8 text-white justify-center items-center"
+        >
           <div className="flex  cursor-pointer space-x-2">
             <FaShoppingCart size={25} />
-            <button className="font-semibold   rounded-2xl">My Cart</button>
+            <button className="font-semibold  cursor-pointer  rounded-2xl">My Cart</button>
           </div>
           <button className="font-semibold  cursor-pointer  rounded-2xl">
             <MdDownloadForOffline size={24} />{" "}
           </button>
         </div>
       </div>
-      <div  className="md:hidden    flex w-full items-center justify-center h-15 ">
+      <div className="md:hidden    flex w-full items-center justify-center h-15 ">
         <div className="p-3 flex items-center justify-between">
           <img className="h-8" src={Logo} alt="Logo" />
-          <button className="ml-22 cursor-pointer border-l-2 border-gray-400 ">
+          <button onClick={handleIsOpen} className="ml-22 cursor-pointer border-l-2 border-gray-400 ">
             {" "}
             <IoReorderThreeOutline size={55} />
           </button>
         </div>
       </div>
+      <Sidebar  isOpen={isOpen}  handleIsOpen={ handleIsOpen}/>
     </div>
   );
 };

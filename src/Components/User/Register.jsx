@@ -124,7 +124,7 @@ const Register = () => {
 
           <button
             onClick={handleShowPassword}
-            className="w-full bg-orange-500 text-white py-2 rounded-lg hover:bg-orange-600 transition-all"
+            className="w-full bg-orange-500 cursor-pointer text-white py-2 rounded-lg hover:bg-orange-600 transition-all"
           >
             Continue
           </button>

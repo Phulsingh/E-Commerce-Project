@@ -18,7 +18,7 @@ const App = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/product" element={<ProductPage/>}/>
-          <Route path="/cart" element={<Cart/>}/>
+          <Route path="/order" element={<Cart/>}/>
         </Routes>
       </BrowserRouter>
       <ToastContainer position="top-center" autoClose={3000} limit={3} />
