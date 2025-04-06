@@ -54,7 +54,6 @@ const Login = () => {
     } else {
       toast.error("This didn't work.") // ❌ Incorrect password
     }
-    
   };
 
   return (

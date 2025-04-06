@@ -130,7 +130,9 @@ const Register = () => {
           </button>
         </form>
 
-        <p className="mt-4 text-gray-500">
+        <p onClick={()=>{
+          navigator("/login")
+        }} className="mt-4 text-gray-500">
           Do you have an account?{" "}
           <a
             href="/login"
