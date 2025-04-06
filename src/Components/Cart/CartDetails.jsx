@@ -23,7 +23,7 @@ const CartDetails = () => {
   return (
     <>
       {toggleCart && (
-        <div className="w-full md:px-2  md:w-1/4 h-screen  overflow-y-auto  md:h-[600px] md:overflow-y-auto absolute fixed top-30 right-0 bg-[#F9F9F9]">
+        <div className="w-full md:px-2  md:w-1/4 h-screen overflow-y-auto  md:h-[600px] md:overflow-y-auto absolute fixed top-30 right-0 bg-[#F9F9F9]">
           <div className="flex hidden md:flex justify-center space-x-4 bg-[#028643] items-center h-20">
             <FaShoppingBasket className="text-white" size={35} />
             <p className="text-white text-3xl  font-bold">My Basket</p>
@@ -89,13 +89,13 @@ const CartDetails = () => {
               </p>
             </div>
             <div className="flex flex-col mt-5 space-y-4 items-center justify-between">
-              <p className="text-1xl md:text-2xl border-2 w-[93%] py-2 flex items-center justify-center rounded-3xl">
+              <p  className="text-1xl cursor-pointer md:text-2xl border-2 w-[93%] py-2 flex items-center justify-center rounded-3xl">
                 Choose your free item
                 <span className="ml-4 md:ml-1 text-[#FC8A06CC]">
                   <FaCircleArrowDown size={24} />
                 </span>
               </p>
-              <p className="text-1xl md:text-2xl border-2 w-[93%] py-2 flex items-center justify-center rounded-3xl">
+              <p className="text-1xl cursor-pointer md:text-2xl border-2 w-[93%] py-2 flex items-center justify-center rounded-3xl">
                 Apply Coupon code here
                 <span className="ml-4 md:ml-1 text-green-300">
                   <BsArrowRightCircleFill size={24} />

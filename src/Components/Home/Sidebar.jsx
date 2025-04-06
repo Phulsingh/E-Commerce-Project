@@ -1,10 +1,13 @@
 import React from "react";
 import { FaTimes } from "react-icons/fa"; // Import icons
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import MyContaxt from "../Contaxt/MyContaxt";
 
 
 const Sidebar = ({ isOpen, handleIsOpen }) => {
   const navigate = useNavigate();
+  const { currentUser} = useContext(MyContaxt)
 
   const logout = ()=>{
     localStorage.removeItem("currentUser");
@@ -37,7 +40,7 @@ const Sidebar = ({ isOpen, handleIsOpen }) => {
           </ul>
           <div className="flex w-full justify-start items-center  m-5 ml- 4">
             <button onClick={logout} className="text-1xl font-semibold p-1 w-[70%] bg-black text-[#FC8A06] rounded-2xl">
-              Logout
+              {currentUser ? "Logout": "Login"}
             </button>
           </div>
         </div>
