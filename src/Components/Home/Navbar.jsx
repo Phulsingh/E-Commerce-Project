@@ -29,8 +29,8 @@ const Navbar = () => {
           <li onClick={()=> navigate("/product")} className="rounded-2xl transition-1s duration-100 hover:bg-[#FC8A06] px-2 py-1" href="">
             Special Offer
           </li>
-          <li onClick={()=> navigate("/product")} className="rounded-2xl transition-1s duration-100 hover:bg-[#FC8A06] px-2 py-1" href="">
-            Restaurants
+          <li onClick={()=> navigate("/setting")} className="rounded-2xl transition-1s duration-100 hover:bg-[#FC8A06] px-2 py-1" href="">
+            Settings
           </li>
           <li onClick={()=> navigate("/order")} className="rounded-2xl transition-1s duration-100 hover:bg-[#FC8A06] px-2 py-1" href="">
             Track Order

@@ -23,7 +23,7 @@ const CartDetails = () => {
   return (
     <>
       {toggleCart && (
-        <div className="w-full md:px-2  md:w-1/4 h-screen overflow-y-auto  md:h-[600px] md:overflow-y-auto absolute fixed top-30 right-0 bg-[#F9F9F9]">
+        <div className="w-full md:px-2  md:w-1/4 h-[82%] overflow-y-auto  md:h-[600px] md:overflow-y-auto absolute fixed top-30 right-0 bg-[#F9F9F9]">
           <div className="flex hidden md:flex justify-center space-x-4 bg-[#028643] items-center h-20">
             <FaShoppingBasket className="text-white" size={35} />
             <p className="text-white text-3xl  font-bold">My Basket</p>
