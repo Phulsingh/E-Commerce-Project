@@ -6,8 +6,10 @@ import Register from "./Components/User/Register";
 import ContaxtProvider from "./Components/Contaxt/ContaxtProvider";
 import ProductPage from "./Components/ProductPage/ProductPage";
 import CheckoutPage from "./Components/Cart/CheckoutPage";
+import Payment from "./Components/PaymentPage/Payment";
 import { ToastContainer } from 'react-toastify';
-import "react-toastify/dist/ReactToastify.css"; // Ensure styles are imported
+import "react-toastify/dist/ReactToastify.css"; 
+
 
 const App = () => {
   return (
@@ -19,6 +21,7 @@ const App = () => {
           <Route path="/register" element={<Register />} />
           <Route path="/product" element={<ProductPage/>}/>
           <Route path="/order" element={<CheckoutPage/>}/>
+          <Route path="/payment" element={<Payment/>}/>
         </Routes>
       </BrowserRouter>
       <ToastContainer position="top-center" autoClose={3000} limit={3} />

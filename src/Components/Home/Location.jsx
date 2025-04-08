@@ -7,16 +7,37 @@ import { IoReorderThreeOutline } from "react-icons/io5";
 import { useContext } from "react";
 import MyContaxt from "../Contaxt/MyContaxt";
 import Sidebar from "./Sidebar";
+import { useEffect } from "react";
 
 const Location = () => {
   const { ToggleCartDetails } = useContext(MyContaxt);
 
-  const [isOpen, setIsOpen]  = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
-  const handleIsOpen = ()=>{
-    setIsOpen((prev)=> !prev)
-  }
+  const handleIsOpen = () => {
+    setIsOpen((prev) => !prev);
+  };
 
+  const [location, setLocation] = useState({ latitude: null, longitude: null });
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          setLocation({
+            latitude: position.coords.latitude,
+            longitude: position.coords.longitude,
+          });
+        },
+        () => {
+          setError("Location access denied. Please enable location services.");
+        }
+      );
+    } else {
+      setError("Geolocation is not supported by your browser.");
+    }
+  }, []);
 
   return (
     <div className="w-full flex justify-center h-15 ">
@@ -32,9 +53,27 @@ const Location = () => {
         <div className="flex  cursor-pointer h-full justify-center space-x-3 items-center  ">
           <FaLocationDot size={24} />
           <p>
-            Regret street , A4, A4201, Londan{" "}
             <span className="text-[#FC8A06] font-semibold underline">
-              Change location
+              {error ? (
+                <p style={{ color: "red" }}>{error}</p>
+              ) : location.latitude && location.longitude ? (
+                <>
+                  <p>
+                    <strong>Latitude:</strong> {location.latitude},{" "}
+                    <strong>Longitude:</strong> {location.longitude}
+                  </p>
+                  <iframe
+                    title="Google Maps"
+                    width="600"
+                    height="450"
+                    style={{ border: "0", marginTop: "10px" }}
+                    src={`https://www.google.com/maps?q=${location.latitude},${location.longitude}&output=embed`}
+                    allowFullScreen
+                  ></iframe>
+                </>
+              ) : (
+                <p>Fetching location...</p>
+              )}
             </span>
           </p>
         </div>
@@ -44,7 +83,9 @@ const Location = () => {
         >
           <div className="flex  cursor-pointer space-x-2">
             <FaShoppingCart size={25} />
-            <button className="font-semibold  cursor-pointer  rounded-2xl">My Cart</button>
+            <button className="font-semibold  cursor-pointer  rounded-2xl">
+              My Cart
+            </button>
           </div>
           <button className="font-semibold  cursor-pointer  rounded-2xl">
             <MdDownloadForOffline size={24} />{" "}
@@ -54,13 +95,16 @@ const Location = () => {
       <div className="md:hidden    flex w-full items-center justify-center h-15 ">
         <div className="p-3 flex items-center justify-between">
           <img className="h-8" src={Logo} alt="Logo" />
-          <button onClick={handleIsOpen} className="ml-22 cursor-pointer border-l-2 border-gray-400 ">
+          <button
+            onClick={handleIsOpen}
+            className="ml-22 cursor-pointer border-l-2 border-gray-400 "
+          >
             {" "}
             <IoReorderThreeOutline size={55} />
           </button>
         </div>
       </div>
-      <Sidebar  isOpen={isOpen}  handleIsOpen={ handleIsOpen}/>
+      <Sidebar isOpen={isOpen} handleIsOpen={handleIsOpen} />
     </div>
   );
 };

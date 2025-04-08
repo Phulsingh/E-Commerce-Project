@@ -33,10 +33,10 @@ const Sidebar = ({ isOpen, handleIsOpen }) => {
           {/* Sidebar Content */}
           <ul className="mt-14 text-lg font-semibold space-y-3 px-6">
             <li onClick={()=> navigate("/")}>Home</li>
-            <li onClick={()=> navigate("/product")}>BrowserMenu</li>
-            <li onClick={()=> navigate("/product")}>Special Offer</li>
-            <li onClick={()=> navigate("/product")}>Restaurants</li>
+            <li onClick={()=> navigate("/product")}>Browser Menu</li>
             <li onClick={()=> navigate("/order")}>Track Order</li>
+            <li onClick={()=> navigate("/product")}>Special Offer</li>
+            <li onClick={()=> navigate("/product")}>Setting</li>
           </ul>
           <div className="flex w-full justify-start items-center  m-5 ml- 4">
             <button onClick={logout} className="text-1xl font-semibold p-1 w-[70%] bg-black text-[#FC8A06] rounded-2xl">

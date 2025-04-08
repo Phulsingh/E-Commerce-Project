@@ -104,39 +104,46 @@ const ContaxtProvider = ({ children }) => {
     localStorage.setItem("users", JSON.stringify(updatedUsers));
   };
 
+  
   const updateCartItemQuantity = (itemId) => {
     if (!currentUser) {
       console.log("Please login to modify the cart");
       return;
     }
-
+  
     const updateCart = cart.map((item) => {
       if (item.id === itemId) {
         console.log("Cart updating", item);
+        
+        // Store the original price separately if not already stored
+        const originalPrice = item.originalPrize || item.prize;
+  
         return {
           ...item,
-          quantity: item.quantity + 1, //increase quantity of the cart
-          prize: item.prize * 2, //Double the prize
+          quantity: item.quantity + 1, // Increase quantity
+          prize: item.prize + originalPrice, // Add original price instead of doubling
+          originalPrize: originalPrice, // Store original price for future calculations
         };
       }
       return item;
     });
-
-    //set the cart updated
+  
+    // Update the cart
     setCart(updateCart);
-
-    //updating the currenUser cart;
+  
+    // Update the current user's cart
     const updatedCurrenUser = { ...currentUser, cart: updateCart };
     setCurrentUser(updatedCurrenUser);
     localStorage.setItem("currentUser", JSON.stringify(updatedCurrenUser));
-
-    //update the userscart;
+  
+    // Update the users' cart
     const updatedUsers = users.map((user) =>
       user.email === currentUser.email ? updatedCurrenUser : user
     );
     setUsers(updatedUsers);
     localStorage.setItem("users", JSON.stringify(updatedUsers));
   };
+  
 
   return (
     <MyContaxt.Provider
